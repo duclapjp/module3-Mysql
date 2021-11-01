@@ -17,3 +17,10 @@ select max(mark),subname,studentname,examtimes from(select m.examtimes, s.studen
 
 select s.studentname,s.phone,c.classname,m.mark from student s join mark m on s.studentid = m.studentid join class c on s.classid = c.classid;
 select avg(mark), studentname,phone,classname from(select s.studentname,s.phone,c.classname,m.mark from student s join mark m on s.studentid = m.studentid join class c on s.classid = c.classid) as duclap group by  studentname order by mark desc ;
+
+
+use quanlysinhvien;
+
+select s.studentname,m.mark from student s join mark m on s.studentid = m.studentid;
+
+select s.studentname,m.mark from student s join mark m on s.studentid = m.studentid;

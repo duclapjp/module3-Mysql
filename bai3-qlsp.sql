@@ -62,3 +62,4 @@ select oid, sum(odqty*pprice) from ( select o.oid, o.odate ,odqty, pprice
 from oder o join oderdetail od on o.oid = od.oid join product p on  od.pid = p.pid) as duclap group by oid;
 
 use quanlybanhang;
+
