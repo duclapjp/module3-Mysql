@@ -72,6 +72,7 @@ create table chitietphieuxuat(
     foreign key (vattuid) references vattu(id)
 );
 
+
 create view vw_CTPNHAP as
     select c.id as `idnhap`,v.id as`idvattu`, c.soluongnhap,c.dongianhap , (dongianhap*soluongnhap) as ` thành tiền` from vattu v join chitietphieunhap c on v.id = c.vattuid;
 select *from vw_CTPNHAP;
@@ -121,12 +122,14 @@ select * from vw_CTPXUAT_VT_PX;
 delimiter //
 create procedure soluongcuoi(in ma_vat_tu int)
 begin
-    select v.name, sum(t.soluongdau) as ` tổng số lượng cuối` from vattu v join tonkho t on v.id = t.vattuid where v.id= ma_vat_tu group by name;
+    select v.name, sum(t.soluongdau) as ` tổng số lượng cuối` from vattu v join tonkho t on v.id = t.vattuid where v.id= ma_vat_tu group by t.vattuid;
 end //
 delimiter ;
 
+drop procedure soluongcuoi;
 
-call soluongcuoi(2);
+
+call soluongcuoi(1);
 
 delimiter //
 create procedure tongtienxuat(in ma_vat_tu int)
@@ -175,3 +178,5 @@ begin
 end//
 
 call insertChiTietDonHang(10,3,5,9);
+
+
